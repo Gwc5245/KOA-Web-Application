@@ -1,0 +1,50 @@
+.weatherstation {
+    position: absolute;
+    width: 513px;
+    height: 77px;
+    left: 311px;
+    top: 34px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+
+    color: #FFFFFF;
+}
+.weekly{
+    position: absolute;
+    width: 109px;
+    height: 39px;
+    left: 413px;
+    top: 117px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+  }
+.monthly{
+    position: absolute;
+    width: 123px;
+    height: 39px;
+    left: 598px;
+    top: 118px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+
+    text-decoration-line: underline;
+
+    color: #FFFFFF;
+}
