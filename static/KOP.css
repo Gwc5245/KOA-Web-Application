@@ -27,6 +27,8 @@
     line-height: 39px;
     /* identical to box height */
 
+    text-decoration-line: underline;
+
 
     color: #FFFFFF;
   }
@@ -43,8 +45,6 @@
     font-size: 32px;
     line-height: 39px;
     /* identical to box height */
-
-    text-decoration-line: underline;
 
     color: #FFFFFF;
 }
@@ -78,6 +78,44 @@
     font-size: 24px;
     line-height: 29px;
     text-align: center;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
+}
+.wifi{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 1619px;
+    top: 25px;
+
+}
+.weeklyrectangle{
+    position: absolute; 
+    width: 1008px; 
+    height: 109.77px; 
+    left: 64px;
+    top: 215px;
+                    
+    background: #8AB7E1;
+    box-shadow: 1px 1px 2px rgba(145, 192, 236, 0.3), -1px -1px 2px rgba(131, 174, 214, 0.5), inset -5px 5px 10px rgba(131, 174, 214, 0.2), inset 5px -5px 10px rgba(131, 174, 214, 0.2), inset -5px -5px 10px rgba(145, 192, 236, 0.9), inset 5px 5px 13px rgba(131, 174, 214, 0.9);
+                    
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+}
+.monday{
+    position: absolute;
+    width: 211px;
+    height: 50px;
+    left: 64px;
+    top: 35px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
 
     color: #FFFFFF;
 
