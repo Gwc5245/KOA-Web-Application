@@ -65,10 +65,36 @@
                         var newDate = mm + "-" + dd + "-" +yyyy; 
                         var p = document.getElementById("myId"); 
                         p.innerHTML = newDate; 
-                        </script> 
-                        
+                        </script>    
                     </p> 
-                    <p class="time">7:10 PM</p>
+                    <p class="time">Time<span id="time" style="color:white"></span>
+                      <script>
+                        setInterval(function() {
+                          var currentTime = new Date();
+                          var hours = currentTime.getHours();
+                          var minutes = currentTime.getMinutes();
+                          var seconds = currentTime.getSeconds();
+                          var suffix = "AM";
+
+                          if (seconds < 10)
+                            seconds = "0" + seconds;
+
+                          if (minutes < 10)
+                            minutes = "0" + minutes;
+
+                          if (hours >= 12) {
+                            suffix = "PM";
+                            hours = hours - 12;
+                          }
+                          if (hours == 0) {
+                            hours = 12;
+                          }
+
+                          document.getElementById("time").innerHTML = "<b><div id='d1'>" + hours + ":" +
+                          minutes + ":" + seconds + " " + suffix + "</div></b>";
+                          }, 1000);
+                        </script>
+                    </p>
                     <img class="wifi" src="wifi.svg" alt="Wifi"></img>
                   </div>
                 </div>
