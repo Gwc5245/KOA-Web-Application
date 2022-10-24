@@ -95,8 +95,6 @@
     position: absolute; 
     width: 1008px; 
     height: 109.77px; 
-    left: 64px;
-    top: 215px;
                     
     background: #8AB7E1;
     box-shadow: 1px 1px 2px rgba(145, 192, 236, 0.3), -1px -1px 2px rgba(131, 174, 214, 0.5), inset -5px 5px 10px rgba(131, 174, 214, 0.2), inset 5px -5px 10px rgba(131, 174, 214, 0.2), inset -5px -5px 10px rgba(145, 192, 236, 0.9), inset 5px 5px 13px rgba(131, 174, 214, 0.9);
@@ -104,7 +102,7 @@
     backdrop-filter: blur(5px);
     border-radius: 30px;
 }
-.monday{
+.weekday{
     position: absolute;
     width: 211px;
     height: 50px;
