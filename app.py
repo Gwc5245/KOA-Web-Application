@@ -26,4 +26,10 @@ def password():
 def TermsAndCoditions():
     return render_template('TOS.html')
 
+
+@app.route('/Dev', methods=['GET', 'POST'])
+def DevDashboard():
+    return render_template('Dev.html')
+
+
 app.run()
