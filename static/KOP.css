@@ -119,3 +119,47 @@
 
     text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
 }
+.low{
+    position: absolute;
+    width: 188px;
+    height: 50px;
+    left: 471px;
+    top: 249px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
+}
+.high{
+    position: absolute;
+    width: 197px;
+    height: 50px;
+    left: 851px;
+    top: 249px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
+}
+.tempgradient{
+    position: absolute;
+    width: 150px;
+    height: 10px;
+    left: 680px;
+    top: 269px;
+
+    background: linear-gradient(90deg, #63D2EB 0%, #FFC700 100%);
+    border-radius: 100px;
+}
