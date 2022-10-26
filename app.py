@@ -39,4 +39,7 @@ def DevManageStations():
 def DevAddStations():
     return render_template('Dev-AddStation.html')
 
+@app.route('/Dev-RmStation')
+def DevRmStation():
+    return render_template('Dev-RmStation.html')
 app.run()
