@@ -42,4 +42,11 @@ def DevAddStations():
 @app.route('/Dev-RmStation')
 def DevRmStation():
     return render_template('Dev-RmStation.html')
+
+
+@app.route('/Dev-Alerts')
+def DevAlerts():
+    return render_template('Dev-Alerts.html')
+
+
 app.run()
