@@ -35,5 +35,8 @@ def DevDashboard():
 def DevManageStations():
     return render_template('Dev-MngStation.html')
 
+@app.route('/Dev-AddStation')
+def DevAddStations():
+    return render_template('Dev-AddStation.html')
 
 app.run()
