@@ -31,5 +31,9 @@ def TermsAndCoditions():
 def DevDashboard():
     return render_template('Dev.html')
 
+@app.route('/Dev-MngStation')
+def DevManageStations():
+    return render_template('Dev-MngStation.html')
+
 
 app.run()
