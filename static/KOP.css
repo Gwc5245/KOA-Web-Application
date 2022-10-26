@@ -106,7 +106,7 @@
     position: absolute;
     width: 211px;
     height: 50px;
-    left: 64px;
+    left: 100px;
     top: 35px;
 
     font-family: 'Inter';
@@ -124,7 +124,7 @@
     width: 188px;
     height: 50px;
     left: 471px;
-    top: 249px;
+    top: 35px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -140,8 +140,8 @@
     position: absolute;
     width: 197px;
     height: 50px;
-    left: 851px;
-    top: 249px;
+    left: 800px;
+    top: 35px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -157,9 +157,65 @@
     position: absolute;
     width: 150px;
     height: 10px;
-    left: 680px;
-    top: 269px;
+    left: 620px;
+    top: 45px;
 
     background: linear-gradient(90deg, #63D2EB 0%, #FFC700 100%);
     border-radius: 100px;
+}
+.statboxes{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 475px;
+    height: 75px;
+    left: 1170px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border: 1px solid #FFFFFF;
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 30px;
+}
+.statnames{
+    position: absolute;
+    width: 188.12px;
+    height: 34.5px;
+    left: 1234px;
+    top: 758px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
+}
+.sunweekday{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 37.49px;
+    height: 37.49px;
+    left: 30px;
+    top: 30px;
+
+    background: linear-gradient(180deg, #FFE600 0%, #FF7A00 100%);
+}
+.cloudweekday{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 54.65px;
+    height: 36.97px;
+    left: 35px;
+    top: 50px;
+
+    background: linear-gradient(180deg, #FFFFFF 3.01%, rgba(255, 255, 255, 0) 111.3%);
+    box-shadow: -21px 15px 50px rgba(29, 38, 70, 0.25);
+    backdrop-filter: blur(7px);
 }
