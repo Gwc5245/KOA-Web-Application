@@ -86,7 +86,7 @@
 .weeklyrectangle{
     position: absolute; 
     width: 1008px; 
-    height: 109.77px; 
+    height: 80px; 
                     
     background: #8AB7E1;
     box-shadow: 1px 1px 2px rgba(145, 192, 236, 0.3), -1px -1px 2px rgba(131, 174, 214, 0.5), inset -5px 5px 10px rgba(131, 174, 214, 0.2), inset 5px -5px 10px rgba(131, 174, 214, 0.2), inset -5px -5px 10px rgba(145, 192, 236, 0.9), inset 5px 5px 13px rgba(131, 174, 214, 0.9);
@@ -99,7 +99,7 @@
     width: 211px;
     height: 50px;
     left: 100px;
-    top: 35px;
+    top: 25px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -116,7 +116,7 @@
     width: 188px;
     height: 50px;
     left: 471px;
-    top: 35px;
+    top: 25px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -133,7 +133,7 @@
     width: 197px;
     height: 50px;
     left: 800px;
-    top: 35px;
+    top: 25px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -150,7 +150,7 @@
     width: 150px;
     height: 10px;
     left: 620px;
-    top: 45px;
+    top: 40px;
 
     background: linear-gradient(90deg, #63D2EB 0%, #FFC700 100%);
     border-radius: 100px;
@@ -195,7 +195,7 @@
     height: 37.49px;
     border-radius: 50%;
     left: 30px;
-    top: 30px;
+    top: 20px;
 
     background: linear-gradient(180deg, #FFE600 0%, #FF7A00 100%);
 }
@@ -204,7 +204,7 @@
 
     position: absolute;
     width: 54.65px;
-    top: 50px;
+    top: 30px;
 }
 .weatherbox{
     box-sizing: border-box;
