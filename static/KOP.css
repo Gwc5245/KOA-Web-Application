@@ -174,8 +174,8 @@
     position: absolute;
     width: 188.12px;
     height: 34.5px;
-    left: 1234px;
-    top: 758px;
+    left: 55px;
+    top: 15px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -205,10 +205,6 @@
     position: absolute;
     width: 54.65px;
     top: 50px;
-
-    /*background: linear-gradient(180deg, #FFFFFF 3.01%, rgba(255, 255, 255, 0) 111.3%);
-    box-shadow: -21px 15px 50px rgba(29, 38, 70, 0.25);
-    backdrop-filter: blur(7px);*/
 }
 .weatherbox{
     box-sizing: border-box;
@@ -217,7 +213,7 @@
     width: 450px;
     height: 385px;
     left: 1183px;
-    top: 120px;
+    top: 100px;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
     border: 1px solid #FFFFFF;
@@ -225,4 +221,70 @@
     /* Note: backdrop-filter has minimal browser support */
 
     border-radius: 30px;
+}
+.raindrop{
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 20px;
+    top: 15px;
+
+}
+.stationname{
+    position: absolute;
+    width: 416px;
+    height: 70px;
+    left: 1198px;
+    top: 490px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
+}
+.bigsun{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    left: 95px;
+    top: 30px;
+
+    background: linear-gradient(180deg, #FFE600 0%, #FF7A00 100%);
+
+}
+.bigcloud{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    left: 160px;
+    top: 120px;
+}
+.temp{
+    position: absolute;
+    width: 500px;
+    height: 120px;
+    left: 50px;
+    top: 250px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 155px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
 }
