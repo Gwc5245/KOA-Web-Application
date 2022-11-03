@@ -11,11 +11,14 @@ def index():
 def welcome():
     return render_template('Welcome.html')
 
+@app.route('/Monthly', methods=['GET', 'POST'])
+def monthly():
+    return render_template('Monthly.html')
+
 
 @app.route('/SignUp', methods=['GET', 'POST'])
 def signup():
     return render_template('SignUp.html')
-
 
 
 @app.route('/Fpass', methods=['GET', 'POST'])
