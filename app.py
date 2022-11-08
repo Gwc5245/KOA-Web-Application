@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request
 
+
 app = Flask(__name__)
 
 
@@ -29,7 +30,6 @@ def password():
 def TermsAndCoditions():
     return render_template('TOS.html')
 
-
 @app.route('/Dev', methods=['GET', 'POST'])
 def DevDashboard():
     return render_template('Dev.html')
@@ -50,6 +50,10 @@ def DevRmStation():
 @app.route('/Dev-Alerts')
 def DevAlerts():
     return render_template('Dev-Alerts.html')
+
+@app.route('/Data-Analyst')
+def DataAnalyst():
+    return render_template('Data-Analyst.html')
 
 
 app.run(host = '0.0.0.0')
