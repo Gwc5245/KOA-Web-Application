@@ -1,7 +1,22 @@
 from flask import Flask, redirect, render_template, request
-
+import pymongo as pymongo
+from pymongo.server_api import ServerApi
+import pandas as pd
+import os
 
 app = Flask(__name__)
+
+
+# Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
+# otherwise you wont be able to see the weather data.
+client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
+                             ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
+                             "&w=majority", server_api=ServerApi('1'))
+
+
+db = client.KOA_WebApp
+
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -10,7 +25,24 @@ def index():
 
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
-    return render_template('Welcome.html')
+    collection = db.KOA_WebApp.Temp
+    cursor = db.Temp.find({"_id": "1"})
+    list_MonLow = list(cursor)
+    MonLow = pd.DataFrame(list_MonLow) 
+    collection = db.KOA_WebApp.Temp
+    cursor = db.Temp.find({"_id": "2" })
+    list_MonHigh = list(cursor)
+    MonHigh = pd.DataFrame(list_MonHigh) 
+
+    cursor = db.Temp.find({"_id": "3"})
+    list_MonLow = list(cursor)
+    TueLow = pd.DataFrame(list_MonLow) 
+    collection = db.KOA_WebApp.Temp
+    cursor = db.Temp.find({"_id": "4" })
+    list_MonHigh = list(cursor)
+    TueHigh = pd.DataFrame(list_MonHigh) 
+    return render_template('Welcome.html', MonLow=MonLow, MonHigh=MonHigh, TueHigh=TueHigh, TueLow=TueLow)
+    
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
