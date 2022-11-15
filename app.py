@@ -5,16 +5,19 @@ import pandas as pd
 import os
 
 app = Flask(__name__)
-
-
-# Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
-# otherwise you wont be able to see the weather data.
-client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
+client = pymongo.MongoClient("mongodb+srv://AKIAUECD3KFK43XFWQPU:fbGlLpow6oal2EY7QPpCHbdNGvcOew49gJfVxXLY@cluster0"
                              ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
                              "&w=majority", server_api=ServerApi('1'))
 
+# Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
+# otherwise you wont be able to see the weather data.
+# client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
+#                             ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
+#                            "&w=majority", server_api=ServerApi('1'))
+
 
 db = client.KOA_WebApp
+
 
 
 
@@ -26,10 +29,11 @@ def index():
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
     collection = db.KOA_WebApp.Temp
-    cursor = db.Temp.find({"_id": "1"})
+    # cursor = db.Temp.find({"_id": "1"})
+    cursor = retrieveMongoDocument("Temp", "_id", "1")
     list_MonLow = list(cursor)
     MonLow = pd.DataFrame(list_MonLow) 
-    collection = db.KOA_WebApp.Temp
+    collection = db.Temp
     cursor = db.Temp.find({"_id": "2" })
     list_MonHigh = list(cursor)
     MonHigh = pd.DataFrame(list_MonHigh) 
@@ -42,7 +46,11 @@ def welcome():
     list_MonHigh = list(cursor)
     TueHigh = pd.DataFrame(list_MonHigh) 
     return render_template('Welcome.html', MonLow=MonLow, MonHigh=MonHigh, TueHigh=TueHigh, TueLow=TueLow)
-    
+
+def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
+        collection = db[collectionName]
+        cursor = collection.find_one({searchFieldName: searchFieldValue})
+        return cursor
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
