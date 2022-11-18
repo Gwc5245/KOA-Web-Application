@@ -23,23 +23,23 @@ def index():
 
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
-    collection = db.KOA_WebApp.Temp
-    # cursor = db.Temp.find({"_id": "1"})
     cursor = retrieveMongoDocument("Temp", "_id", "1")
     list_MonLow = list(cursor)
     MonLow = pd.DataFrame(list_MonLow)
-    collection = db.Temp
-    cursor = db.Temp.find({"_id": "2"})
+
+    cursor = retrieveMongoDocument("Temp", "_id", "2")
     list_MonHigh = list(cursor)
     MonHigh = pd.DataFrame(list_MonHigh)
 
-    cursor = db.Temp.find({"_id": "3"})
+    cursor = retrieveMongoDocument("Temp", "_id", "3")
     list_MonLow = list(cursor)
     TueLow = pd.DataFrame(list_MonLow)
-    collection = db.KOA_WebApp.Temp
-    cursor = db.Temp.find({"_id": "4"})
+
+
+    cursor = retrieveMongoDocument("Temp", "_id", "4")
     list_MonHigh = list(cursor)
     TueHigh = pd.DataFrame(list_MonHigh)
+
     return render_template('Welcome.html', MonLow=MonLow, MonHigh=MonHigh, TueHigh=TueHigh, TueLow=TueLow)
 
 
@@ -49,10 +49,10 @@ def welcome():
 # The value that should be in the field.
 # The method will return a PyMongo cursor object.
 def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
-    collection = db[collectionName]
-    cursor = collection.find_one({searchFieldName: searchFieldValue})
+    dbWebApp = client.KOA_WebApp
+    print("Searching for", searchFieldName, "with a value of", searchFieldValue, "in collection", collectionName + ".")
+    cursor = [i for i in dbWebApp[collectionName].find({searchFieldName: (searchFieldValue)})]
     return cursor
-
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
