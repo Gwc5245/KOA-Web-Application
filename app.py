@@ -58,6 +58,10 @@ def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
 def monthly():
     return render_template('Monthly.html')
 
+@app.route('/Settings', methods=['GET', 'POST'])
+def settings():
+    return render_template('Settings.html')
+
 
 @app.route('/SignUp', methods=['GET', 'POST'])
 def signup():
