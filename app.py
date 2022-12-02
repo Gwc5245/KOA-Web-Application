@@ -18,7 +18,7 @@ db = client.KOA_WebApp
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('KOP.html')
+    return render_template('Welcome.html')
 
 
 @app.route('/Welcome', methods=['GET', 'POST'])
@@ -53,6 +53,10 @@ def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
     print("Searching for", searchFieldName, "with a value of", searchFieldValue, "in collection", collectionName + ".")
     cursor = [i for i in dbWebApp[collectionName].find({searchFieldName: (searchFieldValue)})]
     return cursor
+
+@app.route('/KOP', methods=['GET', 'POST'])
+def kop():
+    return render_template('KOP.html')
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
