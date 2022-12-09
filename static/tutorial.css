@@ -30,11 +30,13 @@
     transform: translate(-50%, -50%) scale(0);
     background: white;
     width: 450px;
-    height: 220px;
+    height: 300px;
     z-index: 11;
     text-align: center;
     padding:20px;
     box-sizing: border-box;
+    border-radius: 10%;
+    color: #8AB7E1;
 }
 
 .popup .close-btn{
@@ -44,13 +46,18 @@
     top:20px;
     width: 30px;
     height: 30px;
-    background-color: lightblue;
+    background-color: #8AB7E1;
     color: white;
     font-size: 25px;
     font-weight: 600;
     line-height: 30px;
     text-align: center;
     border-radius: 50%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
 }
 
 .popup.active .overlay{
