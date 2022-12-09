@@ -58,6 +58,14 @@ def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
 def kop():
     return render_template('KOP.html')
 
+@app.route('/Lewie', methods=['GET', 'POST'])
+def lewie():
+    return render_template('Lewie.html')
+
+@app.route('/Huwey', methods=['GET', 'POST'])
+def huwey():
+    return render_template('Huwey.html')
+
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
     return render_template('Monthly.html')

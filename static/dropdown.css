@@ -24,6 +24,7 @@
     overflow: auto;
     box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
     background-color: #8AB7E1;
+    border-radius: 30px;
   }
   .dropdown:hover .dropdown-content {
     display: block;
