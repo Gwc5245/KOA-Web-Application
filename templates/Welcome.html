@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href='/static/KOP.css'>
         <link rel="stylesheet" href='/static/navbar.css'>
+        <link rel="stylesheet" href='/static/tutorial.css'>
+        <script src="/static/tutorial.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <body>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -40,9 +42,6 @@
                 <body>
                 <div class="row">
                   <div class="column" style="background: linear-gradient(180deg, #B1D0E7 0%, #FFFFFF 100%);">
-                    <div>
-                      <button type="submit" class="btn" style="top: 50px; left: 500px;">Tutorial</button>
-                    </div>
                     <nav>
                       <div class="navbar" style="position: relative; z-index: 10000;">
                         <div class="container nav-container">
@@ -68,6 +67,18 @@
                     <h2 class="weatherstation">Weather History</h2>
                     <p class="weekly" style="font-weight: bold;">Weekly</p>
                     <a href="/Monthly" class="monthly">Monthly</a>
+                    <div style="position: absolute; top: 100px; left: 970px;">
+                     <div class="popup" id="popup-1">
+                      <div class="overlay"></div>
+                      <div class="content">
+                        <div class="close-btn" onclick="togglePopup()">&times;</div>
+                        <h2>Title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum et soluta, saepe dolor harum, quae tempore deserunt vel optio, fugiat sed sit suscipit mollitia enim odit consectetur numquam. Repellendus, perferendis.</p>
+                      </div>
+                     </div> 
+
+                     <button onclick="togglePopup()">Tutorial</button>
+                    </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 215px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
