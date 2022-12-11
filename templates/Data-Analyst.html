@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <style>
     table, th, td {
@@ -8,13 +8,34 @@
 <body>
 <div style="background: linear-gradient(180deg, #B1D0E7 0%, #FFFFFF 100%);">
     <center> <h1 style="font-family: 'Inter';font-style: normal;font-weight: bolder;font-size: 30px;line-height: 50px;color: #FFFFFF;"> Data Gathered by KOA</h1> </center>
-    <center> <h1 style="font-family: 'Inter';font-style: normal;font-weight: bolder;font-size: 30px;line-height: 40px;color: #FFFFFF;"> Welcome Analyst (username placeholder)</h1> </center>
+    <center> <h1 style="font-family: 'Inter';font-style: normal;font-weight: bolder;font-size: 30px;line-height: 40px;color: #FFFFFF;"> Welcome Analyst </h1> </center>
     <table style="width:100%">
         <tr>
             <th>Station(s)</th>
             <th>Date</th>
             <th>Data</th>
         </tr>
+        {% for item in SDewie %}
+        <tr>
+            <th> {{ item.station }} </th>
+            <th>{{ item.date }}</th>
+            <th>Temp F: {{ item.tempF }}, TempC: {{item.tempC }}, Pressure: {{item.pressure}}, Humidity: {{item.humidity}} </th>
+        </tr>
+        {% endfor %}
+        {% for item in SHuey %}
+        <tr>
+            <th> {{ item.station }} </th>
+            <th>{{ item.date }}</th>
+            <th>Temp F: {{ item.tempF }}, TempC: {{item.tempC }}, Pressure: {{item.pressure}}, Humidity: {{item.humidity}} </th>
+        </tr>
+        {% endfor %}
+        {% for item in SLouie %}
+        <tr>
+            <th> {{ item.station }} </th>
+            <th>{{ item.date }}</th>
+            <th>Temp F: {{ item.tempF }}, TempC: {{item.tempC }}, Pressure: {{item.pressure}}, Humidity: {{item.humidity}} </th>
+        </tr>
+        {% endfor %}
     </table>
 </div>
 </body>
