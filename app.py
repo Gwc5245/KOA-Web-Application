@@ -24,24 +24,17 @@ def index():
 
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
-    cursor = retrieveMongoDocument("Temp", "_id", "1")
-    list_MonLow = list(cursor)
-    MonLow = pd.DataFrame(list_MonLow)
+    collection = db.KOADB
+    cursor = db.WeatherStationData.find({'station':'Dewie'})
+    cursor1 = db.WeatherStationData.find({'station':'Huey'})
+    cursor2 = db.WeatherStationData.find({'station':'Louie'})
 
-    cursor = retrieveMongoDocument("Temp", "_id", "2")
-    list_MonHigh = list(cursor)
-    MonHigh = pd.DataFrame(list_MonHigh)
+    list_SDewie = list(cursor)
+    list_SHuey = list(cursor1)
+    list_SLouie = list(cursor2)
+    
 
-    cursor = retrieveMongoDocument("Temp", "_id", "3")
-    list_MonLow = list(cursor)
-    TueLow = pd.DataFrame(list_MonLow)
-
-
-    cursor = retrieveMongoDocument("Temp", "_id", "4")
-    list_MonHigh = list(cursor)
-    TueHigh = pd.DataFrame(list_MonHigh)
-
-    return render_template('Welcome.html', MonLow=MonLow, MonHigh=MonHigh, TueHigh=TueHigh, TueLow=TueLow)
+    return render_template('Welcome.html', SDewie=list_SDewie, SHuey=list_SHuey, SLouie=list_SLouie)
 
 
 # Retrieves the document with the following criteria:
@@ -49,11 +42,11 @@ def welcome():
 # The field name of the document you're querying,
 # The value that should be in the field.
 # The method will return a PyMongo cursor object.
-def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
-    dbWebApp = client.KOA_WebApp
-    print("Searching for", searchFieldName, "with a value of", searchFieldValue, "in collection", collectionName + ".")
-    cursor = [i for i in dbWebApp[collectionName].find({searchFieldName: (searchFieldValue)})]
-    return cursor
+#def retrieveMongoDocument(collectionName, searchFieldName, searchFieldValue):
+    #dbWebApp = client.KOA_WebApp
+    #print("Searching for", searchFieldName, "with a value of", searchFieldValue, "in collection", collectionName + ".")
+    #cursor = [i for i in dbWebApp[collectionName].find({searchFieldName: (searchFieldValue)})]
+    #return cursor
 
 @app.route('/KOP', methods=['GET', 'POST'])
 def kop():

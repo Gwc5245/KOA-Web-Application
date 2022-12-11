@@ -89,10 +89,12 @@
                     <div class="weeklyrectangle" style="left: 64px; top: 215px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                      {% for item in SDewie %}
                       <p class="weekday">Monday</p>
-                      <p class="low">Low: {{ MonLow }}  </p>
+                      <p class="low">Low: {{ item.tempF }}   </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: {{ MonHigh }} </p>
+                      <p class="high">High:  </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 315px;">
                       <div class="sunweekday"></div>
