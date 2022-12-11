@@ -56,9 +56,17 @@ def kop():
 def lewie():
     return render_template('Lewie.html')
 
+@app.route('/MonthlyLewie', methods=['GET', 'POST'])
+def monthlylewie():
+    return render_template('MonthlyLewie.html')
+
 @app.route('/Huwey', methods=['GET', 'POST'])
 def huwey():
     return render_template('Huwey.html')
+
+@app.route('/MonthlyHuwey', methods=['GET', 'POST'])
+def monthlyhuwey():
+    return render_template('MonthlyHuwey.html')
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
