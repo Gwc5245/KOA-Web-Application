@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 # Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
 # otherwise you wont be able to see the weather data.
-client = pymongo.MongoClient("mongodb+srv://AKIAUECD3KFKTMSLGQNR:vA68TOEAfaSQ7jUOyUo38ENaShMBzR3wuK4KXhVE@cluster0"
+client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
                             ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
                            "&w=majority", server_api=ServerApi('1'))
 
 
-#db = client.KOA_WebApp
+db = client.KOA_WebApp
 db = client.KOADB
 
 
