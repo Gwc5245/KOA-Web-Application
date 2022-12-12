@@ -111,6 +111,23 @@
 
     text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);
 }
+.weekdate{
+    position: absolute;
+    width: 211px;
+    height: 50px;
+    left: 230px;
+    top: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+
+    color: #FFFFFF;
+
+    /*text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.4);*/
+}
 .low{
     position: absolute;
     width: 188px;
