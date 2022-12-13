@@ -25,7 +25,10 @@ def index():
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
     collection = db.KOADB
-    cursor = db.WeatherStationData.find({'station':'Dewie', 'time': {"$gte":'18:30:45', "$lt":'18:30:57'}})
+    # The 'time' gets specific data from the database which is captured between those points.
+    # The 'date' gets specific data from the database which is captured on that date. the limit is set to 1 to gathero only 1 data set
+
+    cursor = db.WeatherStationData.find({'station':'Dewie', 'date':'2022-11-30'}).limit(1) #'time': {"$gte":'18:20:45', "$lt":'18:30:57'}}).limit(1) 
 
 
     cursor1 = db.WeatherStationData.find({'station':'Huey'})
