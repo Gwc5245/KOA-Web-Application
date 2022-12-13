@@ -25,7 +25,9 @@ def index():
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
     collection = db.KOADB
-    cursor = db.WeatherStationData.find({'station':'Dewie'})
+    cursor = db.WeatherStationData.find({'station':'Dewie', 'time': {"$gte":'18:30:45', "$lt":'18:30:57'}})
+
+
     cursor1 = db.WeatherStationData.find({'station':'Huey'})
     cursor2 = db.WeatherStationData.find({'station':'Louie'})
 
