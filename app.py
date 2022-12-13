@@ -8,19 +8,117 @@ app = Flask(__name__)
 
 # Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
 # otherwise you wont be able to see the weather data.
+
 client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
-                            ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
-                           "&w=majority", server_api=ServerApi('1'))
-
-
+                             ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
+                             "&w=majority", server_api=ServerApi('1'))
 db = client.KOA_WebApp
 db = client.KOADB
 
+from pathlib import Path
+
+ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
+# Create and configure logger
+
+logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
+                    format='%(asctime)s %(message)s',
+                    filemode='w')
+
+# Creating an object
+logger = logging.getLogger()
+
+# Setting the threshold of logger to DEBUG
+logger.setLevel(logging.DEBUG)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('Welcome.html')
+def getSensorReading(sensor):
+    print("-getSensorReading-")
 
+    sensorData = []
+    try:
+        for x in db.KOADB.WeatherStationData.find(({"station": sensor}),
+                                                                   {"_id": 0, "station": 1, "tempF": 1, "tempC": 1,
+                                                                    "humidity": 1, "pressure": 1, "time": 1,
+                                                                    "date": 1}):
+            sensorData.append({
+                "Temperature℉": str(x["tempF"]),
+                "Temperature℃": str(x["tempC"]),
+                "Humidity": str(x["humidity"]),
+                "Pressure": str(x["pressure"]),
+                "Time": str(x["time"]),
+                "Date": str(x["date"])})
+
+        return sensorData[::-1]
+    except Exception as e:
+        print("An error occurred while getting a sensor reading for", sensor, " Error:\n", e)
+        return False
+
+# Fetches all the readings of the M5 sensors within the past 30 minutes from MongoDB and returns them as an array.
+def getAllSensorReadingLastThirtyMinutes():
+    print("-getAllSensorReadingLastThirtyMinutes-")
+
+    sensorData = []
+    try:
+        for x in db.KOADB.WeatherStationData.find({}, {"_id": 0, "station": 1, "tempF": 1, "tempC": 1,
+                                                                        "humidity": 1, "pressure": 1, "time": 1,
+                                                                        "date": 1}):
+
+            readingTime = datetime.strptime(str(x["time"]), '%H::%M::%S')
+            now = datetime.now()
+            duration = (now - readingTime).total_seconds() / 60.0
+
+            if duration <= 30:
+                sensorData.append({
+                    "Station": str(x["station"]),
+                    "Temperature℉": str(x["tempF"]),
+                    "Temperature℃": str(x["tempC"]),
+                    "Humidity": str(x["humidity"]),
+                    "Pressure": str(x["pressure"]),
+                    "Time": str(x["time"]),
+                    "Date": str(x["date"])})
+        return sensorData
+    except Exception as e:
+        print("-getAllSensorReadingLastThirtyMinutes- An error occurred while getting a sensor readings within last "
+              "thirty minutes Error:\n", e)
+        logger.exception(
+            "-getAllSensorReadingLastThirtyMinutes- An error occurred while getting a sensor readings within last "
+            "thirty minutes. Exception: " + str(e))
+        return False, e
+
+
+# Iterates through all the readings returned from getAllSensorReadingLastThirtyMinutes
+# Interacts with the tweet method to post notable sensor readings.
+def iterateRecentStations():
+    print("-iterateRecentStations-")
+    try:
+        recentReadings = getAllSensorReadingLastThirtyMinutes()
+        highTempLimit = 100
+        lowTempLimit = 40
+        lowPressure = 29.80
+        highPressure = 30.20
+        logger.info(
+            "-iterateRecentStations- Beginning check for abnormal weather conditions in the last 30 minutes of readings.")
+        for x in recentReadings:
+            if int(x["Temperature℉"]) >= highTempLimit:
+                tweet("Station " + x["Station"] + " is reporting an abnormally high temperature of " + x[
+                    "Temperature℉"] + ".")
+            if int(x["Temperature℉"]) <= lowTempLimit:
+                tweet(
+                    "Station " + x[
+                        "Station"] + " is reporting temperatures that may create icy conditions. Temperature: " +
+                    x["Temperature℉"] + ".")
+            if float(x["Pressure"]) <= lowPressure:
+                tweet("Station " + x["Station"] + " is reporting a lower air pressure reading of " + x[
+                    "Pressure"] + "inHg. Indicating clear skies and calm weather is probable.")
+            if float(x["Pressure"]) >= highPressure:
+                tweet("Station " + x["Station"] + " is reporting a higher air pressure reading of " + x[
+                    "Pressure"] + "inHg. Indicating inclement weather is probable.")
+        logger.info("-iterateRecentStations- Successfully iterated through all recent readings and generated alerts.")
+    except Exception as e:
+        logger.exception(
+            "-iterateRecentStations- There was a critical error while checking recent readings. Exception: " + str(e))
 
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
@@ -33,8 +131,8 @@ def welcome():
 
     cursor1 = db.WeatherStationData.find({'station':'Huey'})
     cursor2 = db.WeatherStationData.find({'station':'Louie'})
-
-    list_SDewie = list(cursor)
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_SDewie = getSensorReading("Dewie")[0]
     list_SHuey = list(cursor1)
     list_SLouie = list(cursor2)
     
