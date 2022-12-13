@@ -21,7 +21,7 @@ ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
 # Create and configure logger
 
 logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
-                    format='%(asctime)s %(message)s',
+                   format='%(asctime)s %(message)s',
                     filemode='w')
 
 # Creating an object
