@@ -20,15 +20,15 @@ from pathlib import Path
 ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
 # Create and configure logger
 
-logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
-                   format='%(asctime)s %(message)s',
-                    filemode='w')
+#logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
+#                   format='%(asctime)s %(message)s',
+#                    filemode='w')
 
 # Creating an object
-logger = logging.getLogger()
+#logger = logging.getLogger()
 
 # Setting the threshold of logger to DEBUG
-logger.setLevel(logging.DEBUG)
+#logger.setLevel(logging.DEBUG)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -56,7 +56,7 @@ def getSensorReading(sensor):
         return False
 
 # Fetches all the readings of the M5 sensors within the past 30 minutes from MongoDB and returns them as an array.
-def getAllSensorReadingLastThirtyMinutes():
+#def getAllSensorReadingLastThirtyMinutes():
     print("-getAllSensorReadingLastThirtyMinutes-")
 
     sensorData = []
@@ -90,7 +90,7 @@ def getAllSensorReadingLastThirtyMinutes():
 
 # Iterates through all the readings returned from getAllSensorReadingLastThirtyMinutes
 # Interacts with the tweet method to post notable sensor readings.
-def iterateRecentStations():
+#def iterateRecentStations():
     print("-iterateRecentStations-")
     try:
         recentReadings = getAllSensorReadingLastThirtyMinutes()
