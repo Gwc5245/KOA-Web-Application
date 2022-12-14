@@ -33,6 +33,77 @@
                   display: table;
                   clear: both;
                 }
+                /* The switch - the box around the slider */
+
+                .switch {
+                  position: relative;
+                  display: inline-block;
+                  width: 60px;
+                  height: 34px;
+                }
+
+
+                /* Hide default HTML checkbox */
+
+                .switch input {
+                  display: none;
+                }
+
+
+                /* The slider */
+
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              input:checked+.slider {
+                background-color: #2196F3;
+              }
+
+              input:focus+.slider {
+                box-shadow: 0 0 1px #2196F3;
+              }
+
+              input:checked+.slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);  
+              }
+
+
+              /* Rounded sliders */
+
+              .slider.round {
+                border-radius: 34px;
+              }
+
+              .slider.round:before {
+                border-radius: 50%;
+              }
+
+            #C {
+              display:none;
+            }
                 </style>
                 </head>
                 <body>
@@ -63,6 +134,30 @@
                     <h2 class="weatherstation">Weather History</h2>
                     <a href="/" class="weekly">Weekly</a>
                     <p class="monthly" style="text-decoration-line: underline; font-weight: bold;">Monthly</p>
+                    
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <form>
+                    <label class="switch">
+                    <input type="checkbox" id="toggle" checked="true" />
+                    <div class="slider round"></div>
+                    </label>
+                    </form>
+                    <script>
+                    $(function() {
+                      $("#toggle").click(function() {
+                        if ($(this).is(":checked")) {
+                          $("#F").show();
+                          $("#C").hide();
+                        } else {
+                          $("#F").hide();
+                          $("#C").show();
+                        }
+                      });
+                    });
+                  </script>
+                    <div id ="F">
+                      
+                  
                   <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 200px;">
                     <div class="monthlysun"></div>
                     <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
@@ -291,6 +386,315 @@
                     <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
                   </div>
                 </div>
+              </div>
+              <div id ="C">
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 200px;">
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 270px; top: 200px;">
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 390px; top: 200px;">
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 500px; top: 200px;">
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 620px; top: 200px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/1</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie1 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 740px; top: 200px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/2</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie2 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 860px; top: 200px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/3</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie3 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC }} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/4</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie4 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 270px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/5</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie5 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 390px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/6</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie6 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 510px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/7</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie7 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 630px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/8</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie8 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 750px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/9</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie9 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 870px; top: 320px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/10</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie10 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/11</p>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <div class="monthlysun"></div>
+                  {% for item in Dewie11 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 270px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/12</p>
+                  <div class="monthlysun"></div>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  {% for item in Dewie12 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 390px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/13</p>
+                  <div class="monthlysun"></div>
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  {% for item in Dewie13 %}
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 510px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/14</p>
+                  {% for item in Dewie14 %}
+                  <p style="color: white; text-align: center; bottom: 20px;">[]</p>
+                  <p style="color: white; text-align: center; bottom: 30px;">{{item.tempC}} °C</p>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                  <div class="monthlysun"></div>
+                  {% endfor %}
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 630px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/15</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 750px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/16</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 870px; top: 440px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/17</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/18</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 270px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/19</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 390px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/20</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 510px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/21</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 630px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/22</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 750px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/23</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 870px; top: 560px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/24</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 150px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/25</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 270px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/26</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 390px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/27</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 510px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/28</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 630px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/29</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 750px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/30</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="monthlysquare" style="height: 100px; width: 100px; left: 870px; top: 680px;">
+                  <p style="color: white; text-align: center; top: 20px;">12/31</p>
+                  <div class="monthlysun"></div>
+                  <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="30px" width="20px" style="left: 30px; top: 35px;"></img>
+                </div>
+                <div class="column2" style="background-image: url(/static/backgroundmobile.jpg)">
+                  <p class="Date"  id="myId" style="color:white;">   
+                    <script> 
+                      var date = new Date(); 
+                      var dd = date.getDate(); 
+                      var mm = date.getMonth() + 1; 
+                      var yyyy = date.getFullYear(); 
+                      var newDate = mm + "-" + dd + "-" +yyyy; 
+                      var p = document.getElementById("myId"); 
+                      p.innerHTML = newDate; 
+                      </script>    
+                  </p> 
+                  <p class="time">Time<span id="time" style="color:white"></span>
+                    <script>
+                      setInterval(function() {
+                        var currentTime = new Date();
+                        var hours = currentTime.getHours();
+                        var minutes = currentTime.getMinutes();
+                        var seconds = currentTime.getSeconds();
+                        var suffix = "AM";
+
+                        if (seconds < 10)
+                          seconds = "0" + seconds;
+
+                        if (minutes < 10)
+                          minutes = "0" + minutes;
+
+                        if (hours >= 12) {
+                          suffix = "PM";
+                          hours = hours - 12;
+                        }
+                        if (hours == 0) {
+                          hours = 12;
+                        }
+
+                        document.getElementById("time").innerHTML = "<b><div id='d1'>" + hours + ":" +
+                        minutes + ":" + seconds + " " + suffix + "</div></b>";
+                        }, 1000);
+                      </script>
+                  </p>
+                  <div class="weatherbox">
+                    <div class="bigsun"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="bigcloud"></img>
+                    {% for item in Dewie14 %}
+                    <p class="temp">{{item.tempC}}</p>
+                    {% endfor %}
+                  <div class="dropdown" style="top: 390px; left: 25px;">
+                    <button class="buttonstyle2">Dewie</button>
+                    <div class="dropdown-content">
+                      <a href="/Welcome">Dewie</a>
+                      <a href="/Lewie">Lewie</a>
+                      <a href="/Huwey">Huwey</a>
+                    </div>
+                  </div>
+                  <div class="statboxes" style="top: 460px; width: 475px; left: -15px;">
+                    <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
+                    {% for item in Dewie14 %}
+                    <p class="statnames">Humidty: {{item.humidity}}</p>
+                    {% endfor %}
+                  </div>
+                  <div class="statboxes" style="top: 560px; width: 475px; left: -15px;;">
+                    <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
+                    <p class="statnames">Wind: N/A</p>
+                  </div>
+                  <div class="statboxes" style="top: 660px; width: 475px; left: -15px;">
+                    <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
+                    <p class="statnames">Air Quality:</p>
+                    <p class="statnames" style="left: 240px;">N/A</p>
+                  </div>
+                  <div class="statboxes" style="top: 760px; width: 475px; left: -15px;">
+                    <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
+                    {% for item in Dewie14 %}
+                    <p class="statnames">Pressure {{item.pressure}}</p>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
                   <div class="column2" style="background-image: url(/static/backgroundmobile.jpg)">
                     <p class="Date"  id="myId" style="color:white;">   
                       <script> 
@@ -335,7 +739,7 @@
                       <div class="bigsun"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="bigcloud"></img>
                       {% for item in Dewie14 %}
-                      <p class="temp">{{item.temp}}</p>
+                      <p class="temp">{{item.tempF}}</p>
                       {% endfor %}
                     <div class="dropdown" style="top: 390px; left: 25px;">
                       <button class="buttonstyle2">Dewie</button>
