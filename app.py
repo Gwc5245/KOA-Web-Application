@@ -160,7 +160,44 @@ def monthlyhuwey():
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
-    return render_template('Monthly.html')
+    cursor1 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-1'}).limit(1)
+    cursor2 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-2'}).limit(1)
+    cursor3 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-3'}).limit(1)
+    cursor4 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-4'}).limit(1)
+    cursor5 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-5'}).limit(1)
+    cursor6 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-6'}).limit(1)
+    cursor7 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-7'}).limit(1)
+    cursor8 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-8'}).limit(1)
+    cursor9 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-9'}).limit(1)
+    cursor10 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-10'}).limit(1)
+    cursor11 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-11'}).limit(1)
+    cursor12 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-12'}).limit(1)
+    cursor13 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-13'}).limit(1)
+    cursor14 = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-14'}).limit(1)
+
+    
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_1Dewie = list(cursor1)
+    list_2Dewie = list(cursor2)
+    list_3Dewie = list(cursor3)
+    list_4Dewie = list(cursor4)
+    list_5Dewie = list(cursor5)
+    list_6Dewie = list(cursor6)
+    list_7Dewie = list(cursor7)
+    list_8Dewie = list(cursor8)
+    list_9Dewie = list(cursor9)
+    list_10Dewie = list(cursor10)
+    list_11Dewie = list(cursor11)
+    list_12Dewie = list(cursor12)
+    list_13Dewie = list(cursor13)
+    list_14Dewie = list(cursor14)
+
+
+    
+
+    
+    return render_template('Monthly.html', Dewie1=list_1Dewie,  Dewie2=list_2Dewie, Dewie3=list_3Dewie, Dewie4 = list_4Dewie, Dewie5=list_5Dewie,Dewie6=list_6Dewie, Dewie7=list_7Dewie, Dewie8=list_8Dewie, Dewie9=list_9Dewie,Dewie10=list_10Dewie,Dewie11=list_11Dewie,Dewie12=list_12Dewie,Dewie13=list_13Dewie,Dewie14=list_14Dewie)
+   
 
 @app.route('/Settings', methods=['GET', 'POST'])
 def settings():
