@@ -156,7 +156,44 @@ def huwey():
 
 @app.route('/MonthlyHuwey', methods=['GET', 'POST'])
 def monthlyhuwey():
-    return render_template('MonthlyHuwey.html')
+    cursor1 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-1'}).limit(1)
+    cursor2 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-2'}).limit(1)
+    cursor3 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-3'}).limit(1)
+    cursor4 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-4'}).limit(1)
+    cursor5 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-5'}).limit(1)
+    cursor6 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-6'}).limit(1)
+    cursor7 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-7'}).limit(1)
+    cursor8 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-8'}).limit(1)
+    cursor9 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-9'}).limit(1)
+    cursor10 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-10'}).limit(1)
+    cursor11 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-11'}).limit(1)
+    cursor12 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-12'}).limit(1)
+    cursor13 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-13'}).limit(1)
+    cursor14 = db.WeatherStationData.find({'station':'Huey','date':'2022-12-14'}).limit(1)
+
+    
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_1Huey = list(cursor1)
+    list_2Huey = list(cursor2)
+    list_3Huey = list(cursor3)
+    list_4Huey = list(cursor4)
+    list_5Huey = list(cursor5)
+    list_6Huey = list(cursor6)
+    list_7Huey = list(cursor7)
+    list_8Huey = list(cursor8)
+    list_9Huey = list(cursor9)
+    list_10Huey = list(cursor10)
+    list_11Huey = list(cursor11)
+    list_12Huey = list(cursor12)
+    list_13Huey = list(cursor13)
+    list_14Huey = list(cursor14)
+
+
+    
+
+    
+    return render_template('MonthlyHuwey.html', Huey1=list_1Huey,  Huey2=list_2Huey, Huey3=list_3Huey, Huey4 = list_4Huey, Huey5=list_5Huey,Huey6=list_6Huey, Huey7=list_7Huey, Huey8=list_8Huey, Huey9=list_9Huey,Huey10=list_10Huey,Huey11=list_11Huey,Huey12=list_12Huey,Huey13=list_13Huey,Huey14=list_14Huey)
+   
 
 @app.route('/Monthly', methods=['GET', 'POST'])
 def monthly():
