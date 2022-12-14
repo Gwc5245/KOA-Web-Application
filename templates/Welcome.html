@@ -92,7 +92,8 @@
                       {% for item in MDewie %}
                       <p class="weekday">Monday</p>
                       <p class="weekdate">12/12</p>
-                      <p class="low">Temp: {{ item.tempF }}   </p>
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 315px;">
@@ -101,8 +102,8 @@
                       {% for item in TDewie %}
                       <p class="weekday">Tuesday</p>
                       <p class="weekdate">12/13</p>
-                      <p class="low">Temp: {{ item.tempF }}</p>
-                      <p class="high"></p>
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 415px;">
@@ -111,8 +112,8 @@
                       {% for item in WDewie %}
                       <p class="weekday">Wednesday</p>
                       <p class="weekdate" style="left: 275px;">12/14</p>
-                      <p class="low">Temp: {{item.tempF}} </p>
-
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 515px;">
@@ -121,7 +122,8 @@
                       <p class="weekday">Thursday</p>
                       <p class="weekdate" style="left: 245px;">12/15</p>
                       {% for item in ThDewie %}
-                      <p class="low">Temp:{{item.tempF}} </p>
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 615px;">
@@ -130,7 +132,8 @@
                       <p class="weekday">Friday</p>
                       <p class="weekdate" style="left: 205px;">12/16</p>
                       {% for item in FDewie %}
-                      <p class="low">Temp: {{item.tempF}} </p>
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 715px;">
@@ -139,7 +142,8 @@
                       <p class="weekday">Saturday</p>
                       <p class="weekdate" style="left: 240px;">12/17</p>
                       {% for item in SDewie %}
-                      <p class="low">Temp:{{item.tempF}} </p>
+                      <p class="low">Temp:</p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 815px;">
@@ -217,11 +221,12 @@
                     </div>
                     <div class="statboxes" style="top: 660px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Wind</p>
+                      <p class="statnames">Wind: N/A</p>
                     </div>
                     <div class="statboxes" style="top: 760px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Air Quality</p>
+                      <p class="statnames">Air Quality:</p>
+                      <p class="statnames" style="left: 240px;">N/A</p>
                     </div>
                     <div class="statboxes" style="top: 860px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
