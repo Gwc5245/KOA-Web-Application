@@ -20,17 +20,29 @@ from pathlib import Path
 
 ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
 # Create and configure logger
+<<<<<<< HEAD
 '''
 logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
                    format='%(asctime)s %(message)s',
                     filemode='w')
+=======
+
+#logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
+#                   format='%(asctime)s %(message)s',
+#                    filemode='w')
+>>>>>>> 1661775563f63c840b635f254595f818545dac9c
 
 # Creating an object
-logger = logging.getLogger()
+#logger = logging.getLogger()
 
 # Setting the threshold of logger to DEBUG
+<<<<<<< HEAD
 logger.setLevel(logging.DEBUG)
 '''
+=======
+#logger.setLevel(logging.DEBUG)
+
+>>>>>>> 1661775563f63c840b635f254595f818545dac9c
 @app.route('/', methods=['GET', 'POST'])
 def index():
     collection = db.KOADB
@@ -110,8 +122,12 @@ def getSensorReading(sensor):
         return False
 
 # Fetches all the readings of the M5 sensors within the past 30 minutes from MongoDB and returns them as an array.
+<<<<<<< HEAD
 
 def getAllSensorReadingLastThirtyMinutes():
+=======
+#def getAllSensorReadingLastThirtyMinutes():
+>>>>>>> 1661775563f63c840b635f254595f818545dac9c
     print("-getAllSensorReadingLastThirtyMinutes-")
 
     sensorData = []
@@ -145,8 +161,12 @@ def getAllSensorReadingLastThirtyMinutes():
 
 # Iterates through all the readings returned from getAllSensorReadingLastThirtyMinutes
 # Interacts with the tweet method to post notable sensor readings.
+<<<<<<< HEAD
 
 def iterateRecentStations():
+=======
+#def iterateRecentStations():
+>>>>>>> 1661775563f63c840b635f254595f818545dac9c
     print("-iterateRecentStations-")
     try:
         recentReadings = getAllSensorReadingLastThirtyMinutes()
