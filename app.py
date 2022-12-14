@@ -127,7 +127,32 @@ def monthlylewie():
 
 @app.route('/Huwey', methods=['GET', 'POST'])
 def huwey():
-    return render_template('Huwey.html')
+    cursorM = db.WeatherStationData.find({'station':'Huey','date':'2022-12-12'}).limit(1)
+    cursorT = db.WeatherStationData.find({'station':'Huey','date':'2022-12-13'}).limit(1)
+    cursorW = db.WeatherStationData.find({'station':'Huey','date':'2022-12-14'}).limit(1)
+    cursorTh = db.WeatherStationData.find({'station':'Huey','date':'2022-12-15'}).limit(1)
+    cursorF = db.WeatherStationData.find({'station':'Huey','date':'2022-12-16'}).limit(1)
+    cursorS = db.WeatherStationData.find({'station':'Huey','date':'2022-12-17'}).limit(1)
+    cursorSun = db.WeatherStationData.find({'station':'Huey','date':'2022-12-18'}).limit(1)
+
+
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_MHuwey = list(cursorM)
+    list_THuwey = list(cursorT)
+    list_WHuwey = list(cursorW)
+    list_ThHuwey = list(cursorTh)
+    list_FHuwey = list(cursorF)
+    list_SHuwey = list(cursorS)
+    list_SunHuwey = list(cursorSun)
+
+
+    
+
+    
+
+    
+    return render_template('Huwey.html', MHuwey=list_MHuwey,  THuwey=list_THuwey, WHuwey=list_WHuwey, ThHuwey = list_ThHuwey, FHuwey=list_FHuwey,SunHuwey=list_SunHuwey, SHuwey=list_SHuwey)
+
 
 @app.route('/MonthlyHuwey', methods=['GET', 'POST'])
 def monthlyhuwey():

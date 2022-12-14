@@ -67,7 +67,7 @@
                     </nav>
                     <h2 class="weatherstation">Weather History</h2>
                     <p class="weekly" style="font-weight: bold;">Weekly</p>
-                    <a href="/MonthlyHuwey" class="monthly">Monthly</a>
+                    <a href="/MonthlyLewie" class="monthly">Monthly</a>
                     <div style="position: absolute; top: 100px; left: 1050px;">
                      <div class="popup" id="popup-1">
                       <div class="overlay"></div>
@@ -88,65 +88,73 @@
                     <div class="weeklyrectangle" style="left: 64px; top: 215px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                      {% for item in MHuwey %}
                       <p class="weekday">Monday</p>
                       <p class="weekdate">12/12</p>
-                      <p class="low">Low: {{ MonLow }}  </p>
+                      <p class="low">Temp: {{ item.tempF }}   </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: {{ MonHigh }} </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 315px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                      {% for item in THuwey %}
                       <p class="weekday">Tuesday</p>
                       <p class="weekdate">12/13</p>
-                      <p class="low">Low: {{ TueLow }}</p>
+                      <p class="low">Temp: {{ item.tempF }}</p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: {{ TueHigh }}</p>
+                      <p class="high"></p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 415px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
                       <p class="weekday">Wednesday</p>
                       <p class="weekdate" style="left: 275px;">12/14</p>
-                      <p class="low">Low: </p>
+                      {% for item in WHuwey %}
+                      <p class="low">Temp: {{item.tempF}} </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 515px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
                       <p class="weekday">Thursday</p>
                       <p class="weekdate" style="left: 245px;">12/15</p>
-                      <p class="low">Low: </p>
+                      {% for item in ThHuwey %}
+                      <p class="low">Temp:{{item.tempF}} </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 615px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
                       <p class="weekday">Friday</p>
                       <p class="weekdate" style="left: 205px;">12/16</p>
-                      <p class="low">Low: </p>
+                      {% for item in FHuwey %}
+                      <p class="low">Temp: {{item.tempF}} </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 715px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                      
                       <p class="weekday">Saturday</p>
                       <p class="weekdate" style="left: 240px;">12/17</p>
-                      <p class="low">Low: </p>
+                      {% for item in SHuwey %}
+                      <p class="low">Temp:{{item.tempF}} </p>
                       <div class="tempgradient"></div>
-                      <p class="high">High: </p>
+                      {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 815px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
                       <p class="weekday">Sunday</p>
                       <p class="weekdate" style="left: 220px;">12/18</p>
-                      <p class="low">Low: </p>
-                      <div class="tempgradient"></div>
-                      <p class="high">High: </p>
+                      {% for item in SunHuwey %}
+                      <p class="low">Temp:{{item.tempF}} </p>
+                      {% endfor %}
                     </div>
                   </div>
                   <div class="column2" style="background-image: url(/static/backgroundmobile.jpg)">
@@ -192,37 +200,43 @@
                     <div class="weatherbox">
                       <div class="bigsun"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="bigcloud"></img>
-                      <p class="temp">{{ tempF }}</p>
+                      {% for item in WHuwey %}
+                      <p class="temp">{{ item.tempF }}</p>
                       <button class="tempbutton" style="left: 350px; top: 300px;">Convert</button>
+                      {% endfor %}
                     </div>
                     <div class="dropdown">
-                      <button class="buttonstyle2">Dewi</button>
+                      <button class="buttonstyle2">Huey</button>
                       <div class="dropdown-content">
-                        <a href="/Welcome">Dewi</a>
+                        <a href="/Welcome">Dewie</a>
                         <a href="/Lewie">Lewie</a>
-                        <a href="/Huwey">Huwey</a>
+                        <a href="/Huwey">Huey</a>
                       </div>
                     </div>
                     </div>
                     <div class="statboxes" style="top: 560px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Humidty</p>
+                      {% for item in  WHuwey %}
+                      <p class="statnames">Humidty: {{item.humidity}}</p>
                       <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
+                      {% endfor %}
                     </div>
                     <div class="statboxes" style="top: 660px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Wind</p>
+                      <p class="statnames">Wind: N/A</p>
                       <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
                     </div>
                     <div class="statboxes" style="top: 760px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Air Quality</p>
+                      <p class="statnames">Air Quality: N/A</p>
                       <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
                     </div>
                     <div class="statboxes" style="top: 860px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      <p class="statnames">Pressure</p>
+                      {% for item in  WHuwey %}
+                      <p class="statnames">Pressure {{item.pressure}}</p>
                       <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
