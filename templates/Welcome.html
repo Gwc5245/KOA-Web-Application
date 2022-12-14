@@ -93,7 +93,6 @@
                       <p class="weekday">Monday</p>
                       <p class="weekdate">12/12</p>
                       <p class="low">Temp: {{ item.tempF }}   </p>
-                      <div class="tempgradient"></div>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 315px;">
@@ -103,7 +102,6 @@
                       <p class="weekday">Tuesday</p>
                       <p class="weekdate">12/13</p>
                       <p class="low">Temp: {{ item.tempF }}</p>
-                      <div class="tempgradient"></div>
                       <p class="high"></p>
                       {% endfor %}
                     </div>
@@ -114,7 +112,7 @@
                       <p class="weekday">Wednesday</p>
                       <p class="weekdate" style="left: 275px;">12/14</p>
                       <p class="low">Temp: {{item.tempF}} </p>
-                      <div class="tempgradient"></div>
+
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 515px;">
@@ -124,7 +122,6 @@
                       <p class="weekdate" style="left: 245px;">12/15</p>
                       {% for item in ThDewie %}
                       <p class="low">Temp:{{item.tempF}} </p>
-                      <div class="tempgradient"></div>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 615px;">
@@ -134,18 +131,15 @@
                       <p class="weekdate" style="left: 205px;">12/16</p>
                       {% for item in FDewie %}
                       <p class="low">Temp: {{item.tempF}} </p>
-                      <div class="tempgradient"></div>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 715px;">
                       <div class="sunweekday"></div>
-                      <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
-                      
+                      <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>                      
                       <p class="weekday">Saturday</p>
                       <p class="weekdate" style="left: 240px;">12/17</p>
                       {% for item in SDewie %}
                       <p class="low">Temp:{{item.tempF}} </p>
-                      <div class="tempgradient"></div>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 815px;">
@@ -155,8 +149,7 @@
                       <p class="weekdate" style="left: 220px;">12/18</p>
                       {% for item in SunDewie %}
                       <p class="low">Temp:{{item.tempF}} </p>
-                      {% endfor %}
-                      
+                      {% endfor %}  
                     </div>
                   </div>
                   <div class="column2" style="background-image: url(/static/backgroundmobile.jpg)">
@@ -204,7 +197,6 @@
                       <img src="/static/cloud.png" alt="Cloud" class="bigcloud"></img>
                       {% for item in WDewie %}
                       <p class="temp">{{ item.tempF }}</p>
-                      <button class="tempbutton" style="left: 350px; top: 300px;">Convert</button>
                       {% endfor %}
                     </div>
                     <div class="dropdown">
@@ -219,25 +211,23 @@
                     <div class="statboxes" style="top: 560px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
                       {% for item in  WDewie %}
-                      <p class="statnames">Humidty: {{item.humidity}}</p>
-                      <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
+                      <p class="statnames">Humidty:</p>
+                      <p class="statnames" style="left: 200px;">{{item.humidity}}</p>
                      {% endfor %}
                     </div>
                     <div class="statboxes" style="top: 660px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
                       <p class="statnames">Wind</p>
-                      <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
                     </div>
                     <div class="statboxes" style="top: 760px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
                       <p class="statnames">Air Quality</p>
-                      <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
                     </div>
                     <div class="statboxes" style="top: 860px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
                       {% for item in WDewie %}
-                      <p class="statnames">Pressure: {{item.pressure}}</p>
-                      <button class="tempbutton" style="left: 350px; top: 10px;">Convert</button>
+                      <p class="statnames">Pressure:</p>
+                      <p class="statnames" style="left: 195px;">{{item.pressure}}</p>
                       {% endfor %}
                     </div>
                   </div>
