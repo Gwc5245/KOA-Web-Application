@@ -38,6 +38,77 @@
                 .container{
                   position: relative;
                 }
+                /* The switch - the box around the slider */
+
+                .switch {   
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+                }
+
+
+                /* Hide default HTML checkbox */
+
+                .switch input {
+                  display: none;
+                }
+
+
+                /* The slider */
+
+                .slider {
+                  position: absolute;
+                  cursor: pointer;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  background-color: #ccc;
+                  -webkit-transition: .4s;
+                  transition: .4s;
+                }
+
+                .slider:before {
+                  position: absolute;
+                  content: "";
+                  height: 26px;
+                  width: 26px;
+                  left: 4px;
+                  bottom: 4px;
+                  background-color: white;
+                  -webkit-transition: .4s;
+                  transition: .4s;
+                }
+
+                input:checked+.slider {
+                  background-color: #2196F3;
+                }
+
+                input:focus+.slider {
+                  box-shadow: 0 0 1px #2196F3;
+                }
+
+                input:checked+.slider:before {
+                  -webkit-transform: translateX(26px);
+                  -ms-transform: translateX(26px);
+                  transform: translateX(26px);
+                }
+
+
+                  /* Rounded sliders */
+
+                .slider.round {
+                  border-radius: 34px;
+                }
+
+                .slider.round:before {
+                  border-radius: 50%;
+                }
+
+                #C {
+                  display:none;
+                }
                 </style>
                 </head>
                 <body>
@@ -58,6 +129,7 @@
                           <div class="menu-items" style="background-color:#8AB7E1;">
                             <li><a class="active" href="/Welcome">Home</a></li>
                             <li><a href="/Dev">Developer Dashboard</a></li>
+                            <li><a href="/Data-Analyst">Data Analyst</a></li>
                             <li><a href="/Dev-Alerts">Alerts</a></li>
                             <li><a href="/TOS">Terms Of Service</a></li>
                             <li><a href="/Settings">Settings</a></li>
@@ -67,7 +139,28 @@
                     </nav>
                     <h2 class="weatherstation">Weather History</h2>
                     <p class="weekly" style="font-weight: bold;">Weekly</p>
-                    <a href="/MonthlyHuwey" class="monthly">Monthly</a>
+                    <a href="/Monthly" class="monthly">Monthly</a>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <form>
+                    <label class="switch">
+                    <input type="checkbox" id="toggle" checked="true" />
+                    <div class="slider round"></div>
+                    </label>
+                    </form>
+                    <script>
+                      $(function() {
+                        $("#toggle").click(function() {
+                          if ($(this).is(":checked")) {
+                            $("#F").show();
+                            $("#C").hide();
+                          } else {
+                            $("#F").hide();
+                            $("#C").show();
+                          }
+                        });
+                      });
+                    </script>
+                    
                     <div style="position: absolute; top: 100px; left: 1050px;">
                      <div class="popup" id="popup-1">
                       <div class="overlay"></div>
@@ -85,6 +178,7 @@
 
                      <button class="buttonstyle" onclick="togglePopup()">Tutorial</button>
                     </div>
+                    <div id="F">
                     <div class="weeklyrectangle" style="left: 64px; top: 215px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
@@ -92,7 +186,7 @@
                       <p class="weekday">Monday</p>
                       <p class="weekdate">12/12</p>
                       <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   °F </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 315px;">
@@ -102,16 +196,15 @@
                       <p class="weekday">Tuesday</p>
                       <p class="weekdate">12/13</p>
                       <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
-                      <p class="high"></p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}  °F  </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 415px;">
                       <div class="sunweekday"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                      {% for item in WHuwey %}
                       <p class="weekday">Wednesday</p>
                       <p class="weekdate" style="left: 275px;">12/14</p>
-                      {% for item in WHuwey %}
                       <p class="low">Temp:</p>
                       <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
                       {% endfor %}
@@ -123,7 +216,7 @@
                       <p class="weekdate" style="left: 245px;">12/15</p>
                       {% for item in ThHuwey %}
                       <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   °F </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 615px;">
@@ -133,18 +226,17 @@
                       <p class="weekdate" style="left: 205px;">12/16</p>
                       {% for item in FHuwey %}
                       <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}   °F </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 715px;">
                       <div class="sunweekday"></div>
-                      <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
-                      
+                      <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>                      
                       <p class="weekday">Saturday</p>
                       <p class="weekdate" style="left: 240px;">12/17</p>
                       {% for item in SHuwey %}
                       <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
+                      <p class="low" style="left: 575px;"> {{ item.tempF }}  °F  </p>
                       {% endfor %}
                     </div>
                     <div class="weeklyrectangle" style="left: 64px; top: 815px;">
@@ -153,11 +245,14 @@
                       <p class="weekday">Sunday</p>
                       <p class="weekdate" style="left: 220px;">12/18</p>
                       {% for item in SunHuwey %}
-                      <p class="low">Temp:</p>
-                      <p class="low" style="left: 575px;"> {{ item.tempF }}   </p>
-                      {% endfor %}
+                      <p class="low">Temp:{{item.tempF}} °F </p>
+                      {% endfor %}  
                     </div>
                   </div>
+                  </div>
+                  
+                    
+
                   <div class="column2" style="background-image: url(/static/backgroundmobile.jpg)">
                     <p class="Date"  id="myId" style="color:white;">   
                       <script> 
@@ -206,20 +301,20 @@
                       {% endfor %}
                     </div>
                     <div class="dropdown">
-                      <button class="buttonstyle2">Huey</button>
+                      <button class="buttonstyle2">Huwey</button>
                       <div class="dropdown-content">
                         <a href="/Welcome">Dewie</a>
                         <a href="/Lewie">Lewie</a>
-                        <a href="/Huwey">Huey</a>
+                        <a href="/Huwey">Huwey</a>
                       </div>
                     </div>
                     </div>
                     <div class="statboxes" style="top: 560px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      {% for item in  WHuwey %}
+                      {% for item in  WHuweye %}
                       <p class="statnames">Humidty:</p>
                       <p class="statnames" style="left: 200px;">{{item.humidity}}</p>
-                      {% endfor %}
+                     {% endfor %}
                     </div>
                     <div class="statboxes" style="top: 660px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
@@ -232,12 +327,84 @@
                     </div>
                     <div class="statboxes" style="top: 860px; width: 475px;">
                       <img src="/static/raindrop.png" alt="RainDrop" class="raindrop" height="35px" width="25px"></img>
-                      {% for item in  WHuwey %}
+                      {% for item in WHuwey %}
                       <p class="statnames">Pressure:</p>
-                      <p class="statnames" style="left: 200px;">{{item.pressure}}</p>
+                      <p class="statnames" style="left: 195px;">{{item.pressure}}</p>
                       {% endfor %}
                     </div>
                   </div>
+                </div>
+                <div id="C">
+                  <div class="weeklyrectangle" style="left: 64px; top: 215px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    {% for item in MHuwey %}
+                    <p class="weekday">Monday</p>
+                    <p class="weekdate">12/12</p>
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }}  °C </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 315px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    {% for item in THuwey %}
+                    <p class="weekday">Tuesday</p>
+                    <p class="weekdate">12/13</p>
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }}  °C </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 415px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    {% for item in WHuwey %}
+                    <p class="weekday">Wednesday</p>
+                    <p class="weekdate" style="left: 275px;">12/14</p>
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }}  °C </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 515px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    <p class="weekday">Thursday</p>
+                    <p class="weekdate" style="left: 245px;">12/15</p>
+                    {% for item in ThHuwey %}
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }} °C  </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 615px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    <p class="weekday">Friday</p>
+                    <p class="weekdate" style="left: 205px;">12/16</p>
+                    {% for item in FHuwey %}
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }}  °C </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 715px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>                      
+                    <p class="weekday">Saturday</p>
+                    <p class="weekdate" style="left: 240px;">12/17</p>
+                    {% for item in SHuwey %}
+                    <p class="low">Temp:</p>
+                    <p class="low" style="left: 575px;"> {{ item.tempC }}  °C </p>
+                    {% endfor %}
+                  </div>
+                  <div class="weeklyrectangle" style="left: 64px; top: 815px;">
+                    <div class="sunweekday"></div>
+                    <img src="/static/cloud.png" alt="Cloud" class="cloudweekday" height="40px" width="50px" style="left: 35px;"></img>
+                    <p class="weekday">Sunday</p>
+                    <p class="weekdate" style="left: 220px;">12/18</p>
+                    {% for item in SunHuwey %}
+                    <p class="low">Temp:{{item.tempC}}°C </p>
+                    {% endfor %}  
+                  </div>
+                </div>
                 </div>
         </body>
     </head>
