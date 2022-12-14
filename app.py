@@ -3,23 +3,24 @@ import pymongo as pymongo
 from pymongo.server_api import ServerApi
 import pandas as pd
 import os
+import logging
 
 app = Flask(__name__)
 
 # Before you run app make sure you replace access/secret key below with actual key(s) values to access data from the database
 # otherwise you wont be able to see the weather data.
 
-client = pymongo.MongoClient("mongodb+srv://<AWS access key>:<AWS secret key>@cluster0"
+client = pymongo.MongoClient("mongodb+srv://AKIAUECD3KFKYKYOPQBJ:jQeHaCTQrEOcLRG2UBpIrxW1X9PbpOL05oRXcF83@cluster0"
                              ".re3ie7p.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS&retryWrites=true"
                              "&w=majority", server_api=ServerApi('1'))
-db = client.KOA_WebApp
+
 db = client.KOADB
 
 from pathlib import Path
 
 ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__)))
 # Create and configure logger
-
+'''
 logging.basicConfig(filename=os.path.join(ROOT_DIR, 'static', 'WebApplication.txt'),
                    format='%(asctime)s %(message)s',
                     filemode='w')
@@ -29,10 +30,63 @@ logger = logging.getLogger()
 
 # Setting the threshold of logger to DEBUG
 logger.setLevel(logging.DEBUG)
-
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('Welcome.html')
+    collection = db.KOADB
+    # The 'time' gets specific data from the database which is captured between those points.
+    # The 'date' gets specific data from the database which is captured on that date. the limit is set to 1 to gathero only 1 data set
+
+    #cursor = db.WeatherStationData.find({'station':'Dewie', 'date':'2022-11-30'}).limit(1) #'time': {"$gte":'18:20:45', "$lt":'18:30:57'}}).limit(1) 
+    
+    cursorM = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-12'}).limit(1)
+    cursorT = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-13'}).limit(1)
+    cursorW = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-14'}).limit(1)
+    cursorTh = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-15'}).limit(1)
+    cursorF = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-16'}).limit(1)
+    cursorS = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-17'}).limit(1)
+    cursorSun = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-18'}).limit(1)
+
+    cursor1 = db.WeatherStationData.find({'station':'Huey'})
+    cursor2 = db.WeatherStationData.find({'station':'Louie'})
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_MDewie = list(cursorM)
+    list_TDewie = list(cursorT)
+    list_WDewie = list(cursorW)
+    list_ThDewie = list(cursorTh)
+    list_FDewie = list(cursorF)
+    list_SDewie = list(cursorS)
+    list_SunDewie = list(cursorSun)
+    list_SHuey = list(cursor1)
+    list_SLouie = list(cursor2)
+    
+
+    
+    return render_template('Welcome.html', MDewie=list_MDewie,  TDewie=list_TDewie, WDewie=list_WDewie, ThDewie = list_ThDewie, FDewie=list_FDewie,SunDewie=list_SunDewie, SDewie=list_SDewie, SHuey=list_SHuey, SLouie=list_SLouie)
+    '''
+    cursor = db.WeatherStationData.find({'station':'Dewie'})
+    list_SDewie = list(cursor)
+    list_SDewie = getSensorReading('Dewie')[0]
+
+
+    return render_template('Welcome.html', Dewie=list_SDewie, stationReadings=getLowestTemperature('Dewie')['Temperature℉'])
+    '''
+    
+
+'''
+def getLowestTemperature(station):
+    lowtemp['Temperature℉'] = 111
+    for x in getSensorReading(station):
+        if(x['Temperature℉']<lowTemp['Temperature℉']):
+            lowtemp = x
+            # returns the whole array object with the lowest temperature. Temperature can be fetched with getLowestTemperature(station)['Temperature℉']
+    return lowtemp
+
+
+
+
+
+
 def getSensorReading(sensor):
     print("-getSensorReading-")
 
@@ -56,6 +110,7 @@ def getSensorReading(sensor):
         return False
 
 # Fetches all the readings of the M5 sensors within the past 30 minutes from MongoDB and returns them as an array.
+
 def getAllSensorReadingLastThirtyMinutes():
     print("-getAllSensorReadingLastThirtyMinutes-")
 
@@ -90,6 +145,7 @@ def getAllSensorReadingLastThirtyMinutes():
 
 # Iterates through all the readings returned from getAllSensorReadingLastThirtyMinutes
 # Interacts with the tweet method to post notable sensor readings.
+
 def iterateRecentStations():
     print("-iterateRecentStations-")
     try:
@@ -120,25 +176,27 @@ def iterateRecentStations():
         logger.exception(
             "-iterateRecentStations- There was a critical error while checking recent readings. Exception: " + str(e))
 
+'''
+'''
 @app.route('/Welcome', methods=['GET', 'POST'])
 def welcome():
     collection = db.KOADB
     # The 'time' gets specific data from the database which is captured between those points.
     # The 'date' gets specific data from the database which is captured on that date. the limit is set to 1 to gathero only 1 data set
 
-    cursor = db.WeatherStationData.find({'station':'Dewie', 'date':'2022-11-30'}).limit(1) #'time': {"$gte":'18:20:45', "$lt":'18:30:57'}}).limit(1) 
-
+    #cursor = db.WeatherStationData.find({'station':'Dewie', 'date':'2022-11-30'}).limit(1) #'time': {"$gte":'18:20:45', "$lt":'18:30:57'}}).limit(1) 
+    Mcursor = db.WeatherStationData.find({'station':'Dewie','date':'2022-12-12'}).limit(1)
 
     cursor1 = db.WeatherStationData.find({'station':'Huey'})
     cursor2 = db.WeatherStationData.find({'station':'Louie'})
     # Get sensor readings for sensor and choose the most recent entry with index "0"
-    list_SDewie = getSensorReading("Dewie")[0]
+    list_SDewie = list(Mcursor)
     list_SHuey = list(cursor1)
     list_SLouie = list(cursor2)
     
 
     return render_template('Welcome.html', SDewie=list_SDewie, SHuey=list_SHuey, SLouie=list_SLouie)
-
+'''
 
 # Retrieves the document with the following criteria:
 # The name of the collection it is in (MongoDB),
