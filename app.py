@@ -123,7 +123,44 @@ def lewie():
 
 @app.route('/MonthlyLewie', methods=['GET', 'POST'])
 def monthlylewie():
-    return render_template('MonthlyLewie.html')
+    cursor1 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-1'}).limit(1)
+    cursor2 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-2'}).limit(1)
+    cursor3 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-3'}).limit(1)
+    cursor4 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-4'}).limit(1)
+    cursor5 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-5'}).limit(1)
+    cursor6 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-6'}).limit(1)
+    cursor7 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-7'}).limit(1)
+    cursor8 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-8'}).limit(1)
+    cursor9 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-9'}).limit(1)
+    cursor10 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-10'}).limit(1)
+    cursor11 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-11'}).limit(1)
+    cursor12 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-12'}).limit(1)
+    cursor13 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-13'}).limit(1)
+    cursor14 = db.WeatherStationData.find({'station':'Lewie','date':'2022-12-14'}).limit(1)
+
+    
+    # Get sensor readings for sensor and choose the most recent entry with index "0"
+    list_1Lewie = list(cursor1)
+    list_2Lewie = list(cursor2)
+    list_3Lewie = list(cursor3)
+    list_4Lewie = list(cursor4)
+    list_5Lewie = list(cursor5)
+    list_6Lewie = list(cursor6)
+    list_7Lewie = list(cursor7)
+    list_8Lewie = list(cursor8)
+    list_9Lewie = list(cursor9)
+    list_10Lewie = list(cursor10)
+    list_11Lewie = list(cursor11)
+    list_12Lewie = list(cursor12)
+    list_13Lewie = list(cursor13)
+    list_14Lewie = list(cursor14)
+
+
+    
+
+    
+    return render_template('MonthlyLewie.html', Lewie1=list_1Lewie,  Lewie2=list_2Lewie, Lewie3=list_3Lewie, Lewie4 = list_4Lewie, Lewie5=list_5Lewie,Lewie6=list_6Lewie, Lewie7=list_7Lewie,Lewie8=list_8Lewie, Lewie9=list_9Lewie,Lewie10=list_10Lewie,Lewie11=list_11Lewie,Lewie12=list_12Lewie,Lewie13=list_13Lewie,Lewie14=list_14Lewie)
+   
 
 @app.route('/Huwey', methods=['GET', 'POST'])
 def huwey():

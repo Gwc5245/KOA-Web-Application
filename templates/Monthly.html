@@ -334,7 +334,9 @@
                     <div class="weatherbox">
                       <div class="bigsun"></div>
                       <img src="/static/cloud.png" alt="Cloud" class="bigcloud"></img>
-                      <p class="temp"></p>
+                      {% for item in Dewie14 %}
+                      <p class="temp">{{item.temp}}</p>
+                      {% endfor %}
                     <div class="dropdown" style="top: 390px; left: 25px;">
                       <button class="buttonstyle2">Dewie</button>
                       <div class="dropdown-content">
